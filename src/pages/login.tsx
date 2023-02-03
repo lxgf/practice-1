@@ -22,7 +22,7 @@ export default function Login() {
     json: (arg0: { redirectURL?: string; text: string }) => void;
   }
 
-  const login = e => {
+  const login = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault()
     setErrorMsg('')
     axios(
@@ -47,7 +47,7 @@ export default function Login() {
       </Head>
       <main className="flex flex-row gap-3.5 justify-center items-center bg-gradient-to-t from-sky-500 to-indigo-500 text-white h-screen">
         <form
-          onSubmit={e => login(e)}
+          onSubmit={(e) => login}
           method="GET"
           className="bg-white/30 p-5 gap-2 flex flex-col text-black"
         >
