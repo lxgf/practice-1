@@ -2,10 +2,15 @@ import Head from "next/head";
 import { New } from "@/components/New";
 import { newsMock } from "@/mockups/newsMock";
 import { Header } from "@/components/Header";
-import { useState } from "react";
+import {useEffect, useState} from 'react';
+import {getFromStorage} from '@/utils/localStorage';
 
 export default function Articles() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  useEffect(() => {
+    const status: string = getFromStorage("isAuthenticated");
+    setIsAuthenticated(status === "true");
+  }, []);
 
   return (
     <>
@@ -16,7 +21,9 @@ export default function Articles() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-row gap-3.5 items-center flex-col bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white h-screen">
-        <Header isAuthenticated={isAuthenticated} />
+        <div className='xl:px-8 w-full flex justify-center'>
+          <Header isAuthenticated={isAuthenticated} />
+        </div>
         <section className="container max-w-4xl divide-y divide-gray-200 h-full px-2 py-4 mb-5 max-h-full overflow-auto shadow-md shadow-gray-600/50 transition duration-300 hover:shadow-xl hover:shadow-gray-500/90 bg-white">
           {newsMock.map(({ title, description, timestamp, link }, index) => (
             <New

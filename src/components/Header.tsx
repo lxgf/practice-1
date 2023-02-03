@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FunctionComponent } from "react";
 
 interface Props {
-  isAuthenticated: boolean;
+  isAuthenticated: boolean | void;
 }
 
 export const Header: FunctionComponent<Props> = ({ isAuthenticated }) => {
