@@ -14,15 +14,9 @@ export default function Login() {
     password: "",
   });
 
-  const [isError, setIsError] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string>('');
 
-  interface Result {
-    status(number: number): any;
-    json: (arg0: { redirectURL?: string; text: string }) => void;
-  }
-
-  const login = (e: React.FormEvent<HTMLInputElement>) => {
+  const login = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setErrorMsg('')
     axios(

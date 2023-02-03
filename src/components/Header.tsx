@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { FunctionComponent } from "react";
+import React from "react";
 
 interface Props {
   isAuthenticated: boolean | void;
 }
 
-export const Header: FunctionComponent<Props> = ({ isAuthenticated }) => {
+export const Header: React.FC<Props> = ({ isAuthenticated }) => {
   return (
     <header className="w-full py-8 max-w-4xl flex justify-between items-center">
       <Link
